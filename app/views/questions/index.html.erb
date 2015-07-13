@@ -1,0 +1,10 @@
+<h1>Would you rather?</h1>
+<hr>
+
+<%= link_to "New Question", new_question_path, id: "new_link", remote: true %>
+
+<h2>Questions</h2>
+
+<div class="questions" id="questions">
+<%= render @questions %>
+</div>
