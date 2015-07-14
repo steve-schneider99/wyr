@@ -40,7 +40,6 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to questions_url}
       format.js
-    flash[:notice] = @question.option_a + @question.option_b + " " + "deleted"
     end
   end
 

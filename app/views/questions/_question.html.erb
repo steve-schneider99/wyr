@@ -1,16 +1,29 @@
-<ul class="list-unstyled"  id="question_delete_<%= question.id %>">
+<ul class="list-unstyled well well-lg"  id="question_delete_<%= question.id %>">
   <li>
-  <%= link_to like_question_path(question), method: :put do %>
-  <%= question.option_a %>
+  <span class="lead"><%= link_to like_question_path(question), method: :put do %>
+  <%= question.option_a %></span>
   <% end %>
   -<span class="text-info"> OR </span>-
-  <%= link_to dislike_question_path(question), method: :put do %>
-  <%= question.option_b %>
+  <span class="lead"><%= link_to dislike_question_path(question), method: :put do %>
+  <%= question.option_b %></span>&nbsp;&nbsp;&nbsp;
 <% end %>
 <% if user_signed_in? && current_user.admin? %>
-<%= link_to "(remove)", question, method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
+<span><small><%= link_to "(remove)", question, method: :delete, data: {confirm: "Are you sure?"}, remote: true, :class => 'text-danger' %></small></span>
 
 <% end %>
+</li>
+  <br>
+  <li>
+    <div class="col-md-3">
+
+    <div class="progress progress-striped active">
+      <div class="progress-bar progress-bar-success" style="width: <%= question.average_a %>%"></div>
+      <div class="progress-bar progress-bar-warning" style="width: <%= question.average_b %>%"></div>
+    </div>
+    </div>
   </li>
+  <br>
+  <br>
+
 <%= question.get_upvotes.size %> | <%= question.average_a %> % &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= question.get_downvotes.size %> | <%= question.average_b %> %
   </ul>
