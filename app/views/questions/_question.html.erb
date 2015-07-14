@@ -1,4 +1,4 @@
-<ul class="list-unstyled">
+<ul class="list-unstyled"  id="question_delete_<%= question.id %>">
   <li>
   <%= link_to like_question_path(question), method: :put do %>
   <%= question.option_a %>
@@ -7,7 +7,9 @@
   <%= link_to dislike_question_path(question), method: :put do %>
   <%= question.option_b %>
 <% end %>
-
+<% if user_signed_in? && current_user.admin? %>
+<%= link_to "(remove)", question, method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
+<% end %>
   </li>
-<%= question.get_upvotes.size %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= question.get_downvotes.size %><
+<%= question.get_upvotes.size %> | <%= question.average_a %> % &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= question.get_downvotes.size %> | <%= question.average_b %> %
   </ul>

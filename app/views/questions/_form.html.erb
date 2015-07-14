@@ -1,7 +1,8 @@
+
 <%= render "layouts/errors", :object => @question %>
 
-<%= form_for @question, remote: true do |f| %>
-  <%= f.text_field :option_a %>
-  <%= f.text_field :option_b %>
+<%= bootstrap_form_for @question, remote: true do |f| %>
+  <%= f.text_field :option_a, label: "Option A" %>
+  <%= f.text_field :option_b, label: "Option B" %>
 <%= f.submit class: "btn btn-success" %>
 <% end %>
