@@ -1,9 +1,0 @@
-<% @links.each do |link| %>
-    <h4><%= link_to link.title, link %><br>
-      Submitted <%= time_ago_in_words(link.created_at) %>
-      by <%= link.user.email %>
-    </h4>
-  <%= link_to "upvote", like_link_path(link), method: :put do %>
-  <%= link.get_upvotes.size %>
-  <% end %>
-  <% end %>

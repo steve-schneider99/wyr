@@ -1,4 +1,13 @@
-<ul class="list-unstyled"><li><%= question.option_a %>
-  <%= link_to like_question_path(question), method: :put do %><%= question.option_a %> -<span class="text-info"> OR </span>-<%= link_to like_question_path(question)</li></ul>
-<%= question.get_upvotes.size %>
+<ul class="list-unstyled">
+  <li>
+  <%= link_to like_question_path(question), method: :put do %>
+  <%= question.option_a %>
+  <% end %>
+  -<span class="text-info"> OR </span>-
+  <%= link_to dislike_question_path(question), method: :put do %>
+  <%= question.option_b %>
 <% end %>
+
+  </li>
+<%= question.get_upvotes.size %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= question.get_downvotes.size %>
+  </ul>

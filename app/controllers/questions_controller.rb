@@ -14,6 +14,12 @@ class QuestionsController < ApplicationController
     redirect_to :back
   end
 
+  def downvote
+    @question = Question.find(params[:id])
+    @question.downvote_by current_user
+    redirect_to :back
+  end
+
   def create
     @question = Question.new(question_params)
     if @question.save
