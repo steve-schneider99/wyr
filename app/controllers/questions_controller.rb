@@ -9,14 +9,16 @@ class QuestionsController < ApplicationController
 
   def upvote
     @question = Question.find(params[:id])
-
     @question.upvote_by current_user
+    flash[:notice] = "Upvote added to" + " " + @question.option_a
     redirect_to :back
   end
+
 
   def downvote
     @question = Question.find(params[:id])
     @question.downvote_by current_user
+    flash[:notice] = "Upvote added to" + " " + @question.option_b
     redirect_to :back
   end
 
@@ -28,16 +30,17 @@ class QuestionsController < ApplicationController
         format.js
       end
     else
-      flash[:alert] = "There was an error!"
       render :new
     end
   end
 
   def destroy
-    @question = Question.destroy(params[:id])
+    @question = Question.find(params[:id])
+    @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url}
       format.js
+    flash[:notice] = @question.option_a + @question.option_b + " " + "deleted"
     end
   end
 

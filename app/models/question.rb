@@ -8,7 +8,7 @@ class Question < ActiveRecord::Base
     if (self.get_upvotes.size > 0)
       upvotes = self.get_upvotes.size.to_f
       total = self.votes_for.size.to_f
-      result = upvotes/total*100
+      result = (upvotes/total*100).round(2)
     else
       result = 0
     end
@@ -19,7 +19,7 @@ class Question < ActiveRecord::Base
     if (self.get_downvotes.size > 0)
       downvotes = self.get_downvotes.size.to_f
       total = self.votes_for.size.to_f
-      result = downvotes/total*100
+      result = (downvotes/total*100).round(2)
     else
       result = 0
     end

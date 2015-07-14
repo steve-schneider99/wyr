@@ -9,6 +9,7 @@
 <% end %>
 <% if user_signed_in? && current_user.admin? %>
 <%= link_to "(remove)", question, method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
+
 <% end %>
   </li>
 <%= question.get_upvotes.size %> | <%= question.average_a %> % &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= question.get_downvotes.size %> | <%= question.average_b %> %
