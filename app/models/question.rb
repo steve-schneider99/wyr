@@ -1,6 +1,8 @@
 class Question < ActiveRecord::Base
-  belongs_to :user
   acts_as_votable
+
+  validates :option_a, :presence => true
+  validates :option_b, :presence => true
 
   def average_a
     if (self.get_upvotes.size > 0)

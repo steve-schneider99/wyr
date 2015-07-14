@@ -6,11 +6,10 @@ class User < ActiveRecord::Base
   def set_default_role
     self.role ||= :user
   end
-  has_many :votes
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
